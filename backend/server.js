@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const taskRoutes = require("./routes/taskRoutes");
 require("dotnev").config();
 
 const authroute = require("./routes/authRoutes");
@@ -9,6 +10,7 @@ const taskroute = require("./routes/taskRoutes");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/api/tasks", taskRoutes);
 
 app.use("./api/auth", authroute);
 app.use("./api/task", taskroute);
