@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-const authMiddleware = async (req, res) => {
+const authMiddleware = async (req, res,next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -15,7 +15,7 @@ const authMiddleware = async (req, res) => {
     req.user = await User.findById(decoded.userId).select("-password");
     next();
   } catch (err) {
-    res.status(401).json({ meg: "Token is not valid" });
+    res.status(401).json({ msg: "Token is not valid" });
   }
 };
 
