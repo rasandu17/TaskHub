@@ -5,13 +5,13 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  // Check if user previously selected dark mode
+ 
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode !== null ? JSON.parse(savedMode) : false;
   });
 
-  // Update localStorage and apply dark mode class when theme changes
+  
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
     

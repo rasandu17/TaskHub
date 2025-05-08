@@ -24,19 +24,17 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  // This effect ensures the user is logged out if the token expires
   useEffect(() => {
     const checkTokenExpiration = () => {
       const storedUser = localStorage.getItem('user');
       if (!storedUser) return;
       
-      // Add additional token validation logic here if needed
+      
     };
     
     // Check on mount
     checkTokenExpiration();
     
-    // Optional: Check periodically (every 5 minutes)
     const interval = setInterval(checkTokenExpiration, 5 * 60 * 1000);
     
     return () => clearInterval(interval);

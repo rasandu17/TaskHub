@@ -28,7 +28,7 @@ const Navbar = () => {
           
           {user ? (
             <div className="flex items-center space-x-4">
-              <span className="hidden md:inline">Hello, {user.username || user.email}</span>
+              <span className="hidden md:inline">Hello</span>
               <button 
                 onClick={handleLogout}
                 className={`px-4 py-2 rounded ${darkMode ? 'bg-red-600 hover:bg-red-700' : 'bg-red-500 hover:bg-red-600'} text-white`}
