@@ -2,7 +2,7 @@
 
 A full-stack task management application built with the MERN stack (MongoDB, Express, React, Node.js) that allows users to create, manage, and track their tasks efficiently.
 
-![TaskHub](https://via.placeholder.com/800x400?text=TaskHub+Screenshot)
+![alt text](image.png)
 
 ## Features
 
