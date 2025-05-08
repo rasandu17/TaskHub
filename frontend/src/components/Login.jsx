@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import api from "../api";
+import { useNavigate } from "react-router-dom";
+import api from "../api/api";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -8,14 +8,15 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+  
+const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await api.post("/auth/login", { email, password });
       login(response.data);
-      history.push("/dashboard");
+      navigate("/dashboard");
     } catch (err) {
       console.error("Error logging in:", err);
     }

@@ -1,29 +1,41 @@
 import React, { useState } from "react";
 import api from "../api/api.js";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/register", { email, password });
-      history.push("/login");
+      const response = await api.post("/auth/register", { 
+        username, 
+        email, 
+        password 
+      });
+      navigate("/login");
     } catch (err) {
-      console.error("Error registoring", err);
+      console.error("Error registering", err);
     }
   };
-
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h2 className="text-2xl font-semibold text-center mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-3 mb-4 border border-gray-300 rounded"
+          />
           <input
             type="email"
             placeholder="Email"
